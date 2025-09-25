@@ -50,11 +50,11 @@ img {
 }
 
 .minnav h1 {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   letter-spacing: -0.1rem;
   line-height: 1;
   color: black;
-  margin-left: 2rem;
+  margin-left: 1rem;
   margin-top: 2rem;
 }
 
@@ -99,6 +99,7 @@ img {
   font-size: 3rem;
   margin-left: 20px;
   margin-bottom: 1rem;
+  margin-top: 4rem;
 }
 
 /********** Discount *******************/
@@ -146,6 +147,7 @@ img {
   font-size: 0.8rem;
   list-style-type: none;
   margin: 2rem;
+  margin-left: 1.2rem;
 }
 
 .breadcrumbs ol {
