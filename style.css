@@ -177,28 +177,33 @@ img {
 
 /************ Product ****************/
 
-.product_img {
+.product_container img {
+  width: 80%;
+  min-width: 400px;
   display: block;
-  max-width: 45%;
-  height: auto;
+  flex-shrink: 0;
 }
 
 .product_container {
-  display: flex;
-  gap: 80px;
-  padding-left: 100px;
-  padding-top: 50px;
-  padding-right: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 5rem;
+  margin-top: 3rem;
+  margin-left: 3rem;
 }
 
 .product_container section:last-child {
   background-color: #7a958f;
   padding: 1.5rem 1.5rem;
-  padding-right: 5rem;
   margin-top: 2rem;
   border-radius: 20px;
   color: white;
   margin-bottom: 5rem;
+  width: 80%;
+  max-width: 600px;
+  min-width: 400px;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .product_container section:last-child h3 {
@@ -222,6 +227,7 @@ form select {
   border-radius: 10px;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 button {
@@ -235,29 +241,48 @@ button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+button:hover {
+  background-color: #b4dcd4;
+  color: white;
+  cursor: pointer;
+}
+
 .product_container h2 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
 }
 
+.product_container dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2rem;
+}
+
 .product_container dt {
   font-weight: bold;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
 .product_container dd {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
-.product_container section:first-child h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.product_container section:first-child h2 {
+  margin-bottom: 3.5rem;
 }
 
-@media (max-width: 1100px) {
+.product_container section:first-child p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
   .product_container {
     display: block;
-    padding: 0.5rem;
+    padding: 1rem;
+    margin: 0;
   }
 
   .product_img {
@@ -269,5 +294,9 @@ button {
 
   .product_container section {
     padding: 0 1rem;
+  }
+
+  .product_container img {
+    margin: 0 auto;
   }
 }
