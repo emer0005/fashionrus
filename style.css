@@ -111,6 +111,7 @@ img {
 
 .discount p:last-child {
   background-color: red;
+  padding: 0.4rem;
   font-size: 1.3rem;
 }
 
@@ -300,3 +301,5 @@ button:hover {
     margin: 0 auto;
   }
 }
+
+/************ Sold out single product *********/
