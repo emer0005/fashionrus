@@ -1,6 +1,11 @@
 console.log("Sitet er loaded");
 const product_list_container = document.querySelector(".product_list_container");
-getData("https://kea-alt-del.dk/t7/api/products");
+const category_h2 = document.querySelector(".category_h2");
+
+const category = new URLSearchParams(window.location.search).get("category");
+const url = `https://kea-alt-del.dk/t7/api/products?limit=32&category=${category}`;
+
+getData(url);
 
 function getData(url) {
   fetch(url).then((res) => res.json().then((data) => showProducts(data)));
@@ -8,6 +13,10 @@ function getData(url) {
 
 function showProducts(products) {
   console.log("Products: ", products);
+  category_h2.innerHTML = `
+   <h2 class="productlist_h2">${category}</h2>
+  `;
+
   products.forEach((product) => {
     console.log(product.productdisplayname);
     product_list_container.innerHTML += `
@@ -20,14 +29,14 @@ function showProducts(products) {
             <p class="product_cat">
                 <span> ${product.articletype} </span> | <span> ${product.brandname} </span>
             </p>
-            <p>${product.discount !== null ? `Prev. DKK ${product.price},-` : `DKK ${product.price},-`}</p>
-            <div class= ${product.discount !== null ? "discount" : ""}>
+            <p>${product.discount ? `Prev. DKK ${product.price},-` : `DKK ${product.price},-`}</p>
+            <div class= ${product.discount ? "discount" : ""}>
                 <p>
-                ${product.discount !== null ? `Now DKK ${(product.price - product.price * (product.discount / 100)).toFixed(2)},-` : ""}
+                ${product.discount ? `Now DKK ${(product.price - product.price * (product.discount / 100)).toFixed(2)},-` : ""}
                 </p>
-                <p>${product.discount !== null ? `${product.discount}%` : ""}</p>
+                <p>${product.discount ? `${product.discount}%` : ""}</p>
             </div>
-            <a href="/product.html">Read More</a>
+            <a href="/product.html?id=${product.id}">Read More</a>
         </article>
     
     

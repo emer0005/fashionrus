@@ -1,6 +1,7 @@
 console.log("product site loaded ... ");
 
-const id = 1598;
+// const id = 1598;
+const id = new URLSearchParams(window.location.search).get("id");
 const productUrl = "https://kea-alt-del.dk/t7/api/products/" + id;
 const product_container = document.querySelector(".product_container");
 
@@ -14,7 +15,10 @@ function show(data) {
   console.log("Shows data er: ", data);
 
   product_container.innerHTML = `
+  <div class = "${data.soldout === 1 ? "sold_out" : ""}">
  <img class="product_img" src="https://kea-alt-del.dk/t7/images/webp/640/${id}.webp" alt="Grøn taske">
+ <p>${data.soldout === 1 ? "Sold out" : ""}</p>
+ </div>
 
         <div>
             <section>
@@ -38,7 +42,10 @@ function show(data) {
                      </div>
                 </dl>
 
+        
                 <p> DKK ${data.price},-</p>
+               
+                
             </section>
 
             <section>
