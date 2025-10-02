@@ -82,7 +82,7 @@ img {
   padding: 1rem;
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: span 8;
+  grid-row: span 7;
 }
 
 .product_cat {
@@ -273,7 +273,7 @@ button:hover {
   margin-bottom: 3.5rem;
 }
 
-.product_container section:first-child p {
+.price {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 3rem;
@@ -302,4 +302,25 @@ button:hover {
   }
 }
 
-/************ Sold out single product *********/
+/************* Discount **************/
+
+.discount_product {
+  display: flex;
+  gap: 5rem;
+}
+
+.discount_product p:first-child {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.discount_product p:last-child {
+  background-color: red;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.price_discount {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+}
