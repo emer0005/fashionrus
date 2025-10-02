@@ -329,3 +329,16 @@ button:hover {
   display: inline;
   margin: 1rem;
 }
+
+.buttons button {
+  background: white;
+}
+
+.buttons button:hover {
+  background: #b4dcd4;
+}
+
+.buttons button.active {
+  background: #7a958f;
+  color: white;
+}
