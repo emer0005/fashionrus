@@ -3,7 +3,7 @@ const product_list_container = document.querySelector(".product_list_container")
 const category_h2 = document.querySelector(".category_h2");
 
 const category = new URLSearchParams(window.location.search).get("category");
-const url = `https://kea-alt-del.dk/t7/api/products?limit=32&category=${category}`;
+const url = `https://kea-alt-del.dk/t7/api/products?limit=28&category=${category}`;
 
 getData(url);
 

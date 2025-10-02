@@ -1,6 +1,5 @@
 console.log("product site loaded ... ");
 
-// const id = 1598;
 const id = new URLSearchParams(window.location.search).get("id");
 const productUrl = "https://kea-alt-del.dk/t7/api/products/" + id;
 const product_container = document.querySelector(".product_container");
@@ -41,11 +40,16 @@ function show(data) {
                     <dd>${data.brandname}</dd>
                      </div>
                 </dl>
-
         
-                <p> DKK ${data.price},-</p>
-               
-                
+
+                    <p class = "price ${data.discount ? "price_discount" : ""}" > DKK ${data.price},-</p>
+
+                    <div class = "${data.discount ? "discount_product" : ""}">
+                        <p>${data.discount ? `DKK ${(data.price - data.price * (data.discount / 100)).toFixed(2)},-` : ""}</p>
+                        <p>${data.discount ? `${data.discount}%` : ""}</p>
+                    </div>
+
+                        
             </section>
 
             <section>
