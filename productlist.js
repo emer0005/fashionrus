@@ -2,19 +2,23 @@ console.log("Sitet er loaded");
 const product_list_container = document.querySelector(".product_list_container");
 const category_h2 = document.querySelector(".category_h2");
 const category = new URLSearchParams(window.location.search).get("category");
-const url = `https://kea-alt-del.dk/t7/api/products?limit=200&category=${category}`;
+const url = `https://kea-alt-del.dk/t7/api/products?limit=100&category=${category}`;
 let allData;
 
 function getData(url) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      allData = data; // <-- gem her
-      showProducts(allData); // vis produkter første gang
+      allData = data;
+      showProducts(allData);
     });
 }
 
 getData(url);
+
+//////////////
+////Filter////
+//////////////
 
 document.querySelectorAll(".buttons button").forEach((btn) => {
   btn.addEventListener("click", filterKlik);
@@ -42,8 +46,37 @@ function showFiltered(filter) {
   console.log(allData.filter((product) => product.season === filter));
 }
 
+//////////////
+////Sorted////
+//////////////
+
+document.querySelectorAll(".sortButtons button").forEach((knap) => {
+  knap.addEventListener("click", sortButtonKlik);
+});
+let sortDir;
+function sortButtonKlik(evt) {
+  document.querySelectorAll(".sortButtons button").forEach((knap) => {
+    knap.style.background = "rgb(240, 236, 236)";
+  });
+  evt.currentTarget.style.background = "#7a958f";
+  sortDir = evt.currentTarget.dataset.direction;
+  showProducts(allData);
+}
+
 function showProducts(products) {
   product_list_container.innerHTML = "";
+  console.log("sortDir", sortDir);
+  if (sortDir) {
+    products.sort((a, b) => {
+      if (a.price < b.price) {
+        return -1;
+      }
+    });
+    if (sortDir === "desc") {
+      products.reverse();
+    }
+  }
+
   console.log("Products: ", products);
   category_h2.innerHTML = `
    <h2 class="productlist_h2">${category}</h2>

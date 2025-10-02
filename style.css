@@ -327,11 +327,12 @@ button:hover {
 
 .buttons button {
   display: inline;
-  margin: 1rem;
+  background: white;
+  margin-bottom: 1rem;
 }
 
-.buttons button {
-  background: white;
+.buttons button:first-child {
+  margin-left: 2rem;
 }
 
 .buttons button:hover {
@@ -341,4 +342,16 @@ button:hover {
 .buttons button.active {
   background: #7a958f;
   color: white;
+}
+
+.sortButtons button {
+  display: inline;
+  margin: 0.5rem;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  padding: 0.3rem;
+}
+
+.sortButtons button:first-child {
+  margin-left: 2rem;
 }
