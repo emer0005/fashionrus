@@ -1,17 +1,45 @@
 console.log("Sitet er loaded");
 const product_list_container = document.querySelector(".product_list_container");
 const category_h2 = document.querySelector(".category_h2");
-
 const category = new URLSearchParams(window.location.search).get("category");
-const url = `https://kea-alt-del.dk/t7/api/products?limit=28&category=${category}`;
+const url = `https://kea-alt-del.dk/t7/api/products?limit=200&category=${category}`;
+let allData;
+
+function getData(url) {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      allData = data; // <-- gem her
+      showProducts(allData); // vis produkter første gang
+    });
+}
 
 getData(url);
 
-function getData(url) {
-  fetch(url).then((res) => res.json().then((data) => showProducts(data)));
+document.querySelectorAll(".buttons button").forEach((btn) => {
+  btn.addEventListener("click", filterKlik);
+});
+
+function filterKlik(evt) {
+  showFiltered(evt.currentTarget.dataset.season);
+  console.log(evt.currentTarget.dataset.season);
+}
+
+function showFiltered(filter) {
+  console.log("hej", filter);
+  if (filter === "All") {
+    showProducts(allData);
+  } else {
+    const filterSeasonArr = allData.filter((product) => product.season === filter);
+    showProducts(filterSeasonArr);
+    console.log("Mit filter Array", filterSeasonArr);
+  }
+  console.log("ShowFiltered", filter);
+  console.log(allData.filter((product) => product.season === filter));
 }
 
 function showProducts(products) {
+  product_list_container.innerHTML = "";
   console.log("Products: ", products);
   category_h2.innerHTML = `
    <h2 class="productlist_h2">${category}</h2>
