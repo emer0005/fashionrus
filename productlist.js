@@ -21,6 +21,10 @@ document.querySelectorAll(".buttons button").forEach((btn) => {
 });
 
 function filterKlik(evt) {
+  document.querySelectorAll(".buttons button").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  evt.currentTarget.classList.add("active");
   showFiltered(evt.currentTarget.dataset.season);
   console.log(evt.currentTarget.dataset.season);
 }
