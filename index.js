@@ -12,7 +12,7 @@ function showProducts(categoires) {
   categoires.forEach((category) => {
     console.log(category.category);
     category_list_container.innerHTML += `
-        <a href="fashionrus/productlist.html?category=${category.category}">${category.category}</a>
+        <a href="productlist.html?category=${category.category}">${category.category}</a>
 
       
       `;

@@ -101,7 +101,7 @@ function showProducts(products) {
                 </p>
                 <p>${product.discount ? `${product.discount}%` : ""}</p>
             </div>
-            <a href="fashionrus/product.html?id=${product.id}">Read More</a>
+            <a href="product.html?id=${product.id}">Read More</a>
         </article>
     
     
